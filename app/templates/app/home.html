@@ -101,7 +101,7 @@
  <!-- Slider 3 -->
  <div class="owl-carousel" id="slider3">
   {% for m in supply %}
-    <a href="{% url 'product-detail' m.id %}" class="btn zoom"><div class="item"><img src="{{m.product_image.url}}" alt="" height="300"><span class="fw-bold">{{m.title}}</span><br><span class="fs-5">Rs. {{m.discounted_price}}</span></div></a>
+    <a href="{% url 'product-detail' m.id %}" class="btn zoom"><div class="item"><img src="{{m.product_image.url}}" alt="" height="300"><span class="fw-bold">{{m.title}}</span><br><span class="fs-5">A$ {{m.discounted_price}}</span></div></a>
   {% endfor %}
  </div>
 </div>
