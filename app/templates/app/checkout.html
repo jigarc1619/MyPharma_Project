@@ -16,9 +16,9 @@
         </div>
       </div>
     {% endfor %}
-    <p class="fw-bold">Total Cost + A$ 10  = ${{totalcost}}</p>
-    <small>(A$ 10 Delivery Charge)</small> <hr>
-    <small>Term and Condition: Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, ullam saepe! Iure optio repellat dolor velit, minus rem. Facilis cumque neque numquam laboriosam, accusantium adipisci nisi nihil in et quis?</small>
+    <p class="fw-bold">Total Cost A$ {{totalcost|floatformat:2}}</p>
+    <small>(Including A$ 10 Delivery Charge)</small> <hr>
+    <small>Term and Condition: 10days return policy. But if product packaging open, then return won't be accepted. Thank you.</small>
   </div>
   <div class="col-sm-4 offset-sm-1">
     <h4>Select Shipping Address</h4>

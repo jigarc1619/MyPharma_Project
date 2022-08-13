@@ -2,6 +2,34 @@
 {% load static %}
 {% block title %}Customer Registration{% endblock title %}
 {% block main-content %}
+<style>
+  .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 6px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white; 
+  border: 2px solid #4CAF50;
+  font-size: 125%;
+  color: #4CAF50;
+}
+
+.button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+.textfield {
+  font-size: 20px;
+}
+
+</style>
 <div class="container">
  <div class="row my-3">
   <div class="col-sm-6 offset-sm-3">
@@ -16,11 +44,11 @@
     {% endif %}
      {% csrf_token %}
      {% for fm in form %}
-      <div class="form-group mb-3">
+      <div class="textfield form-group mb-3">
       {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
       </div>
      {% endfor %}
-     <input type="submit" value="Submit" class="btn btn-primary">
+     <input type="submit" value="Submit" class="btn btn-primary button">
      <br>
      <div class="text-center text-primary fw-bold"><small>Existing User ? <a href="{% url 'login' %}" class="text-danger">Login Now</a> </small></div>
      {% if form.non_field_errors %}

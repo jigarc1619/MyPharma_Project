@@ -233,7 +233,7 @@ def checkout(request):
 
 			amount += tempamount
 
-		totalamount = round((amount+shipping_amount)/72)
+		totalamount = round((amount+shipping_amount))
 
 	return render(request, 'app/checkout.html', {'add':add, 'cart_items':cart_items, 'totalcost':totalamount})
 
@@ -332,32 +332,17 @@ def pdrug(request, data=None):
 
 			pres= Product.objects.filter(category='D')
 
-	elif data == 'Redmi' or data == 'Samsung':
-
-			pres = Product.objects.filter(category='D').filter(brand=data)
-
-	elif data == 'below':
-
-			pres = Product.objects.filter(category='D').filter(discounted_price__lt=10000)
-
-	elif data == 'above':
-
-			pres = Product.objects.filter(category='D').filter(discounted_price__gt=10000)
 
 	return render(request, 'app/mobile.html', {'pres':pres, 'totalitem':totalitem})
 
 
-# def about(request):
-
-# 	return render(request, 'app/About.html')
 
 def contact(request):
 	if request.method=="GET":
 		name=request.GET.get("name")
 		id=request.GET.get("email")
-		sub=request.GET.get("subject")
 		msg=request.GET.get("message")
-		data=Contact.objects.create(name=name,email=id,subject=sub,msg=msg)
+		data=Contact.objects.create(name=name,email=id,msg=msg)
 		data.save()
 	return render(request ,'app/Contact.html')
 
@@ -376,18 +361,6 @@ def supp(request, data=None):
 
 			supp= Product.objects.filter(category='S')
 
-	elif data == 'Redmi' or data == 'Samsung':
-
-			supp = Product.objects.filter(category='S').filter(brand=data)
-
-	elif data == 'below':
-
-			supp = Product.objects.filter(category='S').filter(discounted_price__lt=10000)
-
-	elif data == 'above':
-
-		    supp = Product.objects.filter(category='S').filter(discounted_price__gt=10000)
-
 	return render(request, 'app/suppliments.html', {'supp':supp, 'totalitem':totalitem})	
 
 
@@ -402,18 +375,6 @@ def supply(request, data=None):
 	if data==None :
 
 			supply= Product.objects.filter(category='MS')
-
-	elif data == 'Redmi' or data == 'Samsung':
-
-			supply = Product.objects.filter(category='MS').filter(brand=data)
-
-	elif data == 'below':
-
-			supply = Product.objects.filter(category='MS').filter(discounted_price__lt=10000)
-
-	elif data == 'above':
-
-			supply = Product.objects.filter(category='MS').filter(discounted_price__gt=10000)
 
 	return render(request, 'app/supplies.html', {'supply':supply, 'totalitem':totalitem})
 

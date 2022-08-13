@@ -2,6 +2,35 @@
 {% load static %}
 {% block title %}Login{% endblock title %}
 {% block main-content %}
+
+<style>
+  .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 6px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white; 
+  border: 2px solid #4CAF50;
+  font-size: 125%;
+  color: #4CAF50;
+}
+
+.button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+.textfield {
+  font-size: 20px;
+}
+
+</style>
 <div class="container">
  <div class="row my-3">
   <div class="col-sm-6 offset-sm-3">
@@ -10,12 +39,12 @@
    <form action="" method="post" novalidate class="shadow p-5">
      {% csrf_token %}
      {% for fm in form %}
-      <div class="form-group">
+      <div class="form-group textfield">
       {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small> <br>
       </div>
      {% endfor %}
      <small><a href="{% url 'password_reset' %}">Forgot Password ?</a></small> <br>
-     <input type="submit" class="btn btn-primary mt-4" value="Login">
+     <input type="submit" class="btn btn-primary mt-4 button" value="Login">
      <br>
      <div class="text-center text-primary fw-bold"><small>New to MyPharma? <a href="{% url 'customerregistration' %}" class="text-danger">Create an Account</a> </small></div>
 		 

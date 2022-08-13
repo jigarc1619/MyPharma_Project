@@ -1,133 +1,93 @@
-{%load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Contact V12</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{% static 'app/contact/images/icons/favicon.ico'%}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{%static 'app/contact/vendor/bootstrap/css/bootstrap.min.css'%}">
-<!--===============================================================================================-->
-	
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{%static 'app/contact/vendor/animate/animate.css'%}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{%static 'app/contact/vendor/css-hamburgers/hamburgers.min.css'%}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{%static 'app/contact/vendor/select2/select2.min.css'%}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{%static 'app/contact/css/util.css'%}">
-	<link rel="stylesheet" type="text/css" href="{%static 'app/contact/css/main.css'%}">
-<!--===============================================================================================-->
-</head>
-<nav class="navbar navbar-expand-lg  navbar-light bg-dark ">
-  <div class="container">
-    <a href="/" class="navbar-brand" style="margin-left:-50%;"><img src="{%static 'app/images/banner/logo_MyPharma.png'%}" height="100px"
-        width="250px"></a>
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 b1" style="color:rgb(0, 0, 0);">
-        <li class="nav-item">
-          <a class="nav-link active " aria-current="page" href="{% url 'home' %}" style="color:white;">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active " aria-current="page" href="{% url 'contact' %}" style="color:white;">Contact</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" id="electronicsDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Categories
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
-            <li><a class="dropdown-item" href="{% url 'pdrug' %}" style="color:rgb(0, 0, 0);">Prescribed Drugs</a>
-            </li>
-            <li><a class="dropdown-item" href="{% url 'suppli' %}">Suppliments</a></li>
-             <li><a class=" dropdown-item" href="{% url 'supply' %}">Medical Supplies</a></li>
-            </ul>
-         </li>
-      </ul>
-      <div style="margin-left:12%;">
-      <form method="get" action="{%url 'search'%}" class="d-flex" >
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
-        <button style="margin-left:10px;" class="btn btn-warning" type="submit"><img src="{%static 'app/images/search icon.png'%}"></button>
-      </form>
-      </div>
-      <div>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          {% if request.user.is_authenticated %}
-          <li class="nav-item dropdown mx-2">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              {{request.user.username|capfirst}}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-              <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
-              <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
-              <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
-              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-            </ul>
-          </li>
-          <li class="nav-item mx-2">
-            <a href="{% url 'showcart' %}" class="nav-link text-white"><span
-                class="badge bg-danger">{{totalitem}}</span> Cart </a>
-          </li>
-          {% else %}
-          <li class="nav-item mx-2">
-            <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
-          </li>
-          <li class="nav-item mx-2">
-            <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registration</a>
-          </li>
-          {% endif %}
-        </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-<body>
 
-	<div class="bg-contact100" style="background-color: black;">
+
+<style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 6px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white; 
+  border: 2px solid #4CAF50;
+  font-size: 125%;
+  color: #4CAF50;
+}
+
+.button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+.textfield {
+  width:30%;
+  padding: 10px;
+  border:0;
+  border: 2px solid #4CAF50;
+  box-shadow:0 0 15px 4px rgba(255, 255, 255, 0.397);
+  border-radius:5px;
+  font-size: 20px;
+}
+
+.fan
+{
+  margin-right: 20px;
+
+}
+</style>
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Contact{% endblock title %}
+
+{% block main-content %}
+<body>
+  
+	<div class="bg-contact100" style="background-color: rgb(255, 255, 255);text-align: center;padding-bottom: 10px;">
 		<div class="container-contact100">
 			<div class="wrap-contact100">
 				<div class="contact100-pic js-tilt" data-tilt>
-					<img src="{%static 'app/contact/images/icon.png'%}" alt="IMG">
+					<img src="{%static 'app/images/banner/logo_MyPharma.png'%}" alt="IMG">
 				</div>
 
-				<form class="contact100-form validate-form" method="GET" action="#">
-					<span class="contact100-form-title">
-						Get in touch
-					</span>
-
+				<form class="contact100-form validate-form shadow p-5" method="GET" action="#">
+					<span class="contact100-form-title" style="color: rgb(9, 22, 56);">
+						<h1>Get in touch</h1>
+					</span><br>
 					<div class="wrap-input100 validate-input" data-validate = "Name is required">
-						<input class="input100" type="text" name="name" placeholder="Name">
+						
+            <i class="fan fa fa-user" aria-hidden="true"></i>
+            <input class="textfield w3-input w3-border w3-round" type="text" name="name" placeholder="Name">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-user" aria-hidden="true"></i>
+							
 						</span>
 					</div>
-
+<br>
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
+						<i class="fan fa fa-envelope" aria-hidden="true"></i>
+            <input class="textfield w3-input w3-border w3-round" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
+							
 						</span>
 					</div>
-
+<br>
 					<div class="wrap-input100 validate-input" data-validate = "Message is required">
-						<textarea class="input100" name="message" placeholder="Message"></textarea>
-						<span class="focus-input100"></span>
+						<i class="fan fa fa-envelope" aria-hidden="true" style="margin-bottom: 2.5%;"></i>
+            <textarea class="textfield w3-input w3-border w3-round" type="text" name="message" placeholder="Type your message here"></textarea>
+						<span class="focus-input100">
+            
+
+            </span>
 					</div>
+<br>
 
 					<div class="container-contact100-form-btn">
-						<button class="contact100-form-btn">
+						<button class=" button contact100-form-btn">
 							Send
 						</button>
 					</div>
@@ -135,84 +95,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="container-dark pb-0 mb-0 justify-content-center text-dark ">
-    <footer class="a1">
-        <div class="row my-5 justify-content-center py-5">
-            <div class="col-11">
-                <div class="row ">
-                    <div class="col-xl-8 col-md-4 col-sm-4 col-12 my-auto mx-auto a">
-                        <h3 class="text-muted mb-md-0 mb-5 bold-text">MyPharma</h3>
-                    </div>
-                    <div class="col-xl-2 col-md-4 col-sm-4 col-12">
-                        <h6 class="mb-3 mb-lg-4 bold-text "><b>MENU</b></h6>
-                        <ul class="list-unstyled">
-                          <a href="{% url 'home' %}" style="text-decoration: none" >  <li>Home</li> </a>
-                          <a href="{% url 'contact' %}" style="text-decoration: none" >  <li>Contact Us</li> </a>
-                          <a href="{% url 'login' %}" style="text-decoration: none" >  <li>Login</li> </a>
-                          <a href="{% url 'customerregistration'%}" style="text-decoration: none" >  <li>Register</li> </a>
-                        </ul>
-                    </div>
-                    <div class="col-xl-2 col-md-4 col-sm-4 col-12">
-                        <h6 class="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5"><b>ADDRESS</b></h6>
-                        <a href="https://goo.gl/maps/7XqhkFg4pvx6nbMNA"> <p class="mb-1">34, Laurel Crescent, Parafield Gardens SA 5107</p>
-                        <p>Adelaide</p></a>
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="col-xl-8 col-md-4 col-sm-4 col-auto my-md-0 mt-5 order-sm-1 order-3 align-self-end">
-                        <p class="social text-muted mb-0 pb-0 bold-text">
-                          <a href="https://www.facebook.com/"><span  class="mx-2"><i class="fab fa-facebook-square"></i></span></a>
-                          <a href="https://www.facebook.com/"><span class="mx-2"><i class="fab fa-linkedin"></i></span></a>
-                          <a href="https://www.facebook.com/"><span class="mx-2"><i class="fab fa-twitter-square"></i></span></a>
-                          <a href="https://www.facebook.com/"><span class="mx-2"><i class="fab fa-instagram"></i></span></a>
-                        </p>
-                      <small class="rights"><span>&#174;</span> MyPharma All Rights Reserved.</small>
-                    </div>
-                    <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end ">
-                        <h6 class="mt-55 mt-2 text-muted bold-text"><b>JIGAR CHOVATIYA</b></h6><small> <span><i class="fa fa-envelope" aria-hidden="true"></i></span> jigarc1619@gmail.com</small>
-                    </div>
-                    <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-2 align-self-end mt-3 ">
-                        <h6 class="text-muted bold-text"><b>MYPHARMA SUPPORT</b></h6><small><span><i class="fa fa-envelope" aria-hidden="true"></i></span>supportformypharma@gmail.com </small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
-</div>
+  </body>
 
- 
-</footer-->
-<!-- Footer -->
-
-
-
-<!--===============================================================================================-->
-	<script src="{%static 'app/contact/vendor/jquery/jquery-3.2.1.min.js'%}"></script>
-<!--===============================================================================================-->
-	<script src="{%static 'app/contact/vendor/bootstrap/js/popper.js'%}"></script>
-	<script src="{%static 'app/contact/vendor/bootstrap/js/bootstrap.min.js'%}"></script>
-<!--===============================================================================================-->
-	<script src="{%static 'app/contact/vendor/select2/select2.min.js'%}"></script>
-<!--===============================================================================================-->
-	<script src="{%static 'app/contact/vendor/tilt/tilt.jquery.min.js'%}"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-23581568-13');
-</script>
-
-</body>
-</html>
+{% endblock main-content %}
