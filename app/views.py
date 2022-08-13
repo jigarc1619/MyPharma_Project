@@ -23,10 +23,6 @@ class ProductView(View):
 
 		totalitem = 0
 
-		topwears = Product.objects.filter(category='TW')
-
-		bottomwears = Product.objects.filter(category='BW')
-
 		pres = Product.objects.filter(category='D')
 
 		supp=Product.objects.filter(category='S')
@@ -37,7 +33,7 @@ class ProductView(View):
 
 			totalitem = len(Cart.objects.filter(user=request.user))
 
-		return render(request, 'app/home.html', {'topwears':topwears, 'bottomwears':bottomwears, 'pres':pres, 'supp': supp, 'supply':supply, 'totalitem':totalitem})
+		return render(request, 'app/home.html', {'pres':pres, 'supp': supp, 'supply':supply, 'totalitem':totalitem})
 
 
 class ProductDetailView(View):
@@ -195,17 +191,8 @@ def minus_cart(request):
 
 			tempamount = (p.quantity * p.product.discounted_price)
 
-			# print("Quantity", p.quantity)
-
-			# print("Selling Price", p.product.discounted_price)
-
-			# print("Before", amount)
-
 			amount += tempamount
 
-			# print("After", amount)
-
-		# print("Total", amount)
 
 		data = {
 
@@ -294,17 +281,8 @@ def remove_cart(request):
 
 			tempamount = (p.quantity * p.product.discounted_price)
 
-			# print("Quantity", p.quantity)
-
-			# print("Selling Price", p.product.discounted_price)
-
-			# print("Before", amount)
 
 			amount += tempamount
-
-			# print("After", amount)
-
-		# print("Total", amount)
 
 		data = {
 
