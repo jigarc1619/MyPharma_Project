@@ -103,7 +103,7 @@ def show_cart(request):
 
 		amount = 0.0
 
-		shipping_amount = 70.0
+		shipping_amount = 10.0
 
 		totalamount=0.0
 
@@ -140,7 +140,7 @@ def plus_cart(request):
 
 		amount = 0.0
 
-		shipping_amount= 70.0
+		shipping_amount= 10.0
 
 		cart_product = [p for p in Cart.objects.all() if p.user == request.user]
 		for p in cart_product:
@@ -188,7 +188,7 @@ def minus_cart(request):
 
 		amount = 0.0
 
-		shipping_amount= 70.0
+		shipping_amount= 10.0
 
 		cart_product = [p for p in Cart.objects.all() if p.user == request.user]
 		for p in cart_product:
@@ -287,7 +287,7 @@ def remove_cart(request):
 
 		amount = 0.0
 
-		shipping_amount= 70.0
+		shipping_amount= 10.0
 
 		cart_product = [p for p in Cart.objects.all() if p.user == request.user]
 		for p in cart_product:
