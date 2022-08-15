@@ -155,7 +155,6 @@ body{
 .home .indicator div.active{
  background-color: rgb(0, 0, 0);
 }
-
 /*responsive*/
 @media(max-width: 767px){
 	.controls{

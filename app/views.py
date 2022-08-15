@@ -333,7 +333,7 @@ def pdrug(request, data=None):
 			pres= Product.objects.filter(category='D')
 
 
-	return render(request, 'app/mobile.html', {'pres':pres, 'totalitem':totalitem})
+	return render(request, 'app/presdg.html', {'pres':pres, 'totalitem':totalitem})
 
 
 

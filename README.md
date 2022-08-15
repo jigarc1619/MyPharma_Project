@@ -5,10 +5,12 @@
 
 <h4>Step 1: Install IDE(Visual Studio or Pycharm etc.) to run project</h4>
 <h4>Step 2: Install Python3 or newer version into system</h4>
-<h4>Step 3: Install django</h4>
+<h4>Step 3: Install django: </h4><h3>pip install Django</h3>
 <h4>Step 4: Create virtual environment into main directory of the project</h4>
-<h4>Step 5: Activate Virtual Environment</h4>
-<h4>Step 6: In terminal/cmd type: python manage.py runserver</h4>
+<h3>pip install virtualenv</h3>
+<h3>python3 -m venv ./venv</h3>
+<h4>Step 5: Activate Virtual Environment</h4><h3>source env/bin/activate</h3>
+<h4>Step 6: Now run actual project by typing in terminal/cmd:</h4><h3> python manage.py runserver</h3>
 <h4>Step 7 (Optional): To view databse in djngo admin first create superuser by typing : <h3>python3 manage.py createsuperuser</h3>
 and follow propmpt then in browser tab write : <h3>127.0.0.1:8000/admin</h3>
 provide username and password which created as superuser.</h4>

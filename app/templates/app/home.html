@@ -27,11 +27,11 @@
          </div>
      </div>
      <div class="slide" style="background-image: url('https://www.bakingbusiness.com/ext/resources/2021/4/Onnit_Lead.jpg?t=1619532060&width=1080')">
-         <div class="container">
+         <div class="container"">
              <div class="caption">
                  <h1 >Suppliments</h1>
                  <p></p>
-                 <a href="{% url 'suppli' %}">Shop Now</a>
+                 <a href="{% url 'suppli' %}" style="color: rgb(0, 0, 0);background-color: rgb(255, 255, 255);">Shop Now</a>
              </div>
          </div>
      </div>
@@ -59,8 +59,12 @@
 
 {% block main-content %}
 
-<div class="mx-3" >
-  <h2 >Prescription Drugs</h2>
+<div class="mx-3">
+  <h2  style="padding: 25px;">
+    <a href="{% url 'pdrug' %}" style="color: black;text-shadow: 2px 2px 4px #6e5b5b">
+      Prescription Drugs
+    </a>
+  </h2>
   <!-- Slider 3 -->
   <div class="owl-carousel" id="slider3">
    {% for m in pres %}
@@ -80,7 +84,11 @@
 
 <!-- 2nd Product Slider -->
 <div class="mx-3" >
-  <h2>Suppliments</h2>
+  <h2  style="padding: 25px;">
+    <a href="{% url 'suppli' %}" style="color: black;text-shadow: 2px 2px 4px #6e5b5b">
+      Suppliments
+    </a>
+  </h2>
   <!-- Slider 3 -->
   <div class="owl-carousel" id="slider3">
    {% for m in supp %}
@@ -97,7 +105,11 @@
 
 <!-- 3rd Product Slider -->
 <div class="mx-3" >
- <h2>Medical Supplies</h2>
+  <h2  style="padding: 25px;">
+    <a href="{% url 'supply' %}" style="color: black;text-shadow: 2px 2px 4px #6e5b5b">
+      Medical Supplies
+    </a>
+  </h2>
  <!-- Slider 3 -->
  <div class="owl-carousel" id="slider3">
   {% for m in supply %}
